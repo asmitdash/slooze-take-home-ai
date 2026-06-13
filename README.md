@@ -1,6 +1,6 @@
 # Slooze Take-Home — Software Engineer (AI)
 
-Two AI agents in a single Python package, sharing one LLM client:
+Two AI agents in a single Python package, sharing one LLM client (AWS Bedrock → Claude Opus 4.7):
 
 - **Challenge A — Web Search Agent.** Natural-language query → DuckDuckGo search → page fetch → Claude (via AWS Bedrock) synthesises a grounded answer with cited sources.
 - **Challenge B — PDF RAG Agent.** PDF in → page-aware text extraction → chunk + local embeddings → FAISS index → retrieval-augmented Q&A and summarisation, again grounded by Claude.
@@ -26,10 +26,10 @@ Configure AWS credentials with Bedrock access (any of the standard mechanisms wo
 export AWS_ACCESS_KEY_ID=...
 export AWS_SECRET_ACCESS_KEY=...
 export BEDROCK_REGION=us-east-1                            # default
-export BEDROCK_MODEL_ID=global.anthropic.claude-sonnet-4-6 # default; any Claude inference profile works
+export BEDROCK_MODEL_ID=global.anthropic.claude-opus-4-7 # default; any Claude inference profile works
 ```
 
-The model ID is a Bedrock inference profile — Sonnet 4.6 is the default for the right cost/quality balance, but Haiku 4.5 or Opus 4.x work with no code change.
+The model ID is a Bedrock inference profile — Opus 4.7 is the default; any other Claude profile works with no code change.
 
 ---
 

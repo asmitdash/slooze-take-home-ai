@@ -15,7 +15,7 @@ import boto3
 
 DEFAULT_MODEL_ID = os.environ.get(
     "BEDROCK_MODEL_ID",
-    "global.anthropic.claude-sonnet-4-6",
+    "global.anthropic.claude-opus-4-7",
 )
 DEFAULT_REGION = os.environ.get("BEDROCK_REGION", "us-east-1")
 
@@ -37,12 +37,10 @@ class BedrockClaude:
         system: str,
         user: str,
         max_tokens: int = 1500,
-        temperature: float = 0.2,
     ) -> LLMResponse:
         body = {
             "anthropic_version": "bedrock-2023-05-31",
             "max_tokens": max_tokens,
-            "temperature": temperature,
             "system": system,
             "messages": [{"role": "user", "content": user}],
         }
